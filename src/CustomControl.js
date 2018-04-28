@@ -32,7 +32,6 @@ class CustomControl extends React.Component {
       className,
       cssModule,
       type,
-      getRef,
       ...attributes
     } = this.props;
 
@@ -42,7 +41,7 @@ class CustomControl extends React.Component {
 
     if (['radio', 'checkbox'].indexOf(type) > -1) {
       customControlClass = `${customControlClass}-control custom-${type}`;
-    }else if ('radio-stacked' === type) {
+    } else if (type === 'radio-stacked') {
       customControlClass = `${customControlClass}-controls-${type}`;
     } else {
       customControlClass = `${customControlClass}-${type}`;
@@ -53,7 +52,7 @@ class CustomControl extends React.Component {
       customControlClass
     ), cssModule);
 
-    return (<Tag {...attributes} ref={getRef} className={classes} />);
+    return (<Tag {...attributes} className={classes} />);
   }
 }
 
