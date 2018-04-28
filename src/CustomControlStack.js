@@ -4,136 +4,93 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-export const Checkbox = (props) => {
+const RadioOrCheckbox = props => {
   const {
     className,
-    name,
     description,
     getRef,
-    disabled,
-    ...attributes,
+    inputType,
+    ...attributes
   } = props;
 
   return (
     <label className={className}>
-      <input {...attributes} type="checkbox" className="custom-control-input" name={name} ref={getRef} disabled={disabled} />
+      <input {...attributes} type={inputType} className="custom-control-input" ref={getRef} />
       <span className="custom-control-indicator"></span>
       {description && (<span className="custom-control-description">{description}</span>)}
     </label>
   );
-}
+};
 
-Checkbox.propTypes = {
+RadioOrCheckbox.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   name: PropTypes.string,
-  description: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  description: PropTypes.string,
   getRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   disabled: PropTypes.bool,
+  inputType: PropTypes.string
 };
 
-Checkbox.defaultProps = {
-  description: false
-};
-
-
-export const Radio = (props) => {
-  const {
-    className,
-    name,
-    description,
-    getRef,
-    disabled,
-    ...attributes,
-  } = props;
-
+export const Checkbox = props => {
   return (
-    <label className={className}>
-      <input {...attributes} type="radio" className="custom-control-input" name={name} ref={getRef} disabled={disabled} />
-      <span className="custom-control-indicator"></span>
-      {description && (<span className="custom-control-description">{description}</span>)}
-    </label>
+    <RadioOrCheckbox inputType="checkbox" {...props} />
   );
-}
-
-Radio.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  name: PropTypes.string,
-  description: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-  getRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  disabled: PropTypes.bool,
 };
 
-Radio.defaultProps = {
-  description: false
+export const Radio = props => {
+  return (
+    <RadioOrCheckbox inputType="radio" {...props} />
+  );
 };
 
 export const Stacked = (props) => {
   const {
-    children,
     className,
-    ...attributes,
+    ...attributes
   } = props;
 
   return (
-    <div className="custom-controls-stacked">
-      {children}
-    </div>
+    <div className="custom-controls-stacked" {...attributes} />
   );
-}
+};
 
 Stacked.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 Stacked.defaultProps = {};
 
 export const Select = (props) => {
   const {
-    children,
-    className,
     getRef,
-    disabled,
-    ...attributes,
+    ...attributes
   } = props;
 
   return (
-    <select {...attributes} className={className} ref={getRef} disabled={disabled} >
-      {children}
-    </select>
+    <select {...attributes} ref={getRef} />
   );
-}
-
-Select.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  getRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  disabled: PropTypes.bool,
 };
 
-Select.defaultProps = {
-  disabled: false
+Select.propTypes = {
+  getRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 export const File = (props) => {
   const {
-    children,
     className,
     getRef,
-    disabled,
     lang,
-    ...attributes,
+    ...attributes
   } = props;
 
   return (
     <label className={className}>
-      <input {...attributes} type="file" className="custom-file-input" disabled={disabled} />
-      <span className="custom-file-control" lang={lang}></span>
+      <input {...attributes} type="file" className="custom-file-input" />
+      <span className="custom-file-control" lang={lang} />
     </label>
   );
-}
+};
 
 File.propTypes = {
   children: PropTypes.node,
@@ -144,6 +101,5 @@ File.propTypes = {
 };
 
 File.defaultProps = {
-  lang: 'en',
-  disabled: false,
+  lang: 'en'
 };
