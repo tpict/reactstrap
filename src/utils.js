@@ -167,9 +167,3 @@ export function omit(obj, omitKeys) {
   });
   return result;
 }
-
-export function tagMapper(elements) {
-  return function(tag) {
-    return elements && elements[tag] ? elements[tag] : (() => null);
-  };
-}

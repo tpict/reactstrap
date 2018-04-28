@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Checkbox, Radio, Stacked, Select, File } from './CustomControlStack';
-import { mapToCssModules, tagMapper } from './utils';
+import { mapToCssModules } from './utils';
 
 const propTypes = {
   children: PropTypes.node,
@@ -18,13 +18,13 @@ const defaultProps = {
   type: 'stacked',
 };
 
-const getTagType = tagMapper({
+const tagTypeMap = {
   checkbox: Checkbox,
   radio: Radio,
   select: Select,
   stacked: Stacked,
   file: File,
-});
+};
 
 class CustomControl extends React.Component {
   render() {
@@ -36,7 +36,7 @@ class CustomControl extends React.Component {
       ...attributes
     } = this.props;
 
-    let Tag = getTagType(type);
+    let Tag = tagTypeMap[type];
 
     let customControlClass = 'custom';
 
