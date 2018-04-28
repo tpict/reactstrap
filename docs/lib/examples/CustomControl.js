@@ -14,15 +14,15 @@ export default class Example extends React.Component {
         <FormGroup>
           <Label for="exampleRadio">Radios</Label>
           <div>
-            <CustomControl id="exampleRadio" type="radio" description="Toggle this custom radio" />
-            <CustomControl id="exampleRadio" type="radio" description="Or toggle this other custom radio" />
+            <CustomControl name="exampleRadio" id="exampleRadio" type="radio" description="Toggle this custom radio" />
+            <CustomControl name="exampleRadio" id="exampleRadio" type="radio" description="Or toggle this other custom radio" />
           </div>
         </FormGroup>
         <FormGroup>
           <Label for="exampleRadioStacked">Radios Stacked</Label>
           <CustomControl id="exampleRadioStacked" type="stacked">
-            <CustomControl type="radio" description="Toggle this custom radio" name="radio-stacked" />
-            <CustomControl type="radio" description="Or toggle this other custom radio" name="radio-stacked" />
+            <CustomControl name="stackedRadio" type="radio" description="Toggle this custom radio" name="radio-stacked" />
+            <CustomControl name="stackedRadio" type="radio" description="Or toggle this other custom radio" name="radio-stacked" />
           </CustomControl>
         </FormGroup>
         <FormGroup>
